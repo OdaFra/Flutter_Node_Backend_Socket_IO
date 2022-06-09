@@ -12,6 +12,7 @@
     <script src="socket.io/socket.io.js"></script>
     <script>
         var socket = io();
+        
         socket.on('connect', function(){
             console.log('Conectado al servidor');
         });
@@ -21,9 +22,19 @@
 
     socket.emit('mensaje', {name:'Oscar'});
 
-    socket.on('mensaje', function (payload){
+    // socket.on('mensaje', function (payload){
+    //     console.log('Escuchando:', payload);
+    // });
+
+    socket.on('emitir-mensaje', function (payload){
         console.log('Escuchando:', payload);
     });
+
+    socket.on('active-bands', function (bands){
+        console.clear();
+        console.table( bands);
+    });
+
 
     </script>
     
